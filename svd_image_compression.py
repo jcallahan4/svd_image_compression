@@ -1,12 +1,20 @@
 # solutions.py
-"""Volume 1: The SVD and Image Compression. Solutions File."""
+"""
+The SVD and Image Compression
+Jake Callahan
+
+The Singular Value Decomposition (SVD) is an incredibly useful matrix factorization
+that is widely used in both theoretical and applied mathematics. The SVD is
+structured in a way that makes it easy to construct low-rank approximations of
+matrices, and it is therefore the basis of several data compression algorithms.
+In this program I use it to implement a simple image compression routine.
+"""
 
 from matplotlib import pyplot as plt
 from scipy import linalg
 from imageio import imread
 import numpy as np
 
-# Problem 1
 def compact_svd(A, tol=1e-6):
     """Compute the truncated SVD of A.
 
@@ -43,7 +51,6 @@ def compact_svd(A, tol=1e-6):
 
     return U1, sigma1, V1.conj().T
 
-# Problem 2
 def visualize_svd(A):
     """Plot the effect of the SVD of A as a sequence of linear transformations
     on the unit circle and the two standard basis vectors.
@@ -100,8 +107,6 @@ def visualize_svd(A):
     #Show plot
     plt.show()
 
-
-# Problem 3
 def svd_approx(A, s):
     """Return the best rank s approximation to A with respect to the 2-norm
     and the Frobenius norm, along with the number of bytes needed to store
@@ -132,8 +137,6 @@ def svd_approx(A, s):
 
     return As, U.size + sigma.size + Vh.size
 
-
-# Problem 4
 def lowest_rank_approx(A, err):
     """Return the lowest rank approximation of A with error less than 'err'
     with respect to the matrix 2-norm, along with the number of bytes needed
@@ -167,13 +170,9 @@ def lowest_rank_approx(A, err):
 
     return As, U_hat.size + sigma_hat.size, Vh_hat.size
 
-
-# Problem 5
 def compress_image(filename, s):
     """Plot the original image found at 'filename' and the rank s approximation
-    of the image found at 'filename.' State in the figure title the difference
-    in the number of entries used to store the original image and the
-    approximation.
+    of the image found at 'filename.'
 
     Parameters:
         filename (str): Image file path.
